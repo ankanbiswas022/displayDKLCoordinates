@@ -150,10 +150,6 @@ axis square;
 mbLocus = load('MBlocus.mat');
 plot(mbLocus.rMB,mbLocus.bMB,'k');
 hold on;
-% plot(bmr0,bmb0,'marker','o','color','r','markerfacecolor','r');
-% plot(bmr1,bmb1,'marker','o','color','g','markerfacecolor','g');
-% plot(bmr2,bmb2,'marker','o','color','b','markerfacecolor','b');
-% plot(bmr3,bmb3,'marker','o','color',[0.5 0.5 0.5],'markerfacecolor',[0.5 0.5 0.5]);
 
 % plot predicted primaries and white point
 plot(bmr0,bmb0,'marker','o','color','r');
@@ -225,7 +221,6 @@ kdlPhiVals = 0:22.5:337.5;
 % kdlPhiVals = 0:90:270;
 
 for i=1:length(kdlPhiVals)
-%     kdlPhi = (i-1)*10;
     kdlPhi = kdlPhiVals(i);
     % Lablib
     [rgb,lum,cb,tc] = kdlToRGB(kdlConstants,kdlPhi,kdlTheta);
@@ -265,8 +260,6 @@ for i=1:length(kdlPhiVals)
     
     % Show stimuli in xyY space. Use Lablib colors
     subplot(233);
-%     subplot(223);
-%     plot3(x,y,0.5+lum/2,'marker', 'o','color',[nRGB0.red nRGB0.green nRGB0.blue],'markerfacecolor',[nRGB0.red nRGB0.green nRGB0.blue]);
     plot3(x,y,(0.5+lum/2)*max(priWhite_Y),'marker', 'o','color',[nRGB0.red nRGB0.green nRGB0.blue]); %predicted
     
     plot3(stimCIEx(i),stimCIEy(i),normStimCIEY(i)*max(priWhite_Y),'marker', '*','color',[nRGB0.red nRGB0.green nRGB0.blue]); %actual
