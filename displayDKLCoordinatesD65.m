@@ -9,8 +9,9 @@
 % nRGB0 and nRGB1 - normalized rgb0 and rgb1    
 % ============================================================================
 
-function [rgb0,rgb1,nRGB0,nRGB1] = displayDKLCoordinatesD65(kdlTheta)
-
+%% Main function: 
+function [rgb0,rgb1,nRGB0,nRGB1,kdlTheta,kdlPhiVals] = displayDKLCoordinatesD65(kdlTheta)
+clf
 if ~exist('kdlTheta','var');            kdlTheta=0;                     end
 
 % x and y coordinates of the primaries, computed from the spectra measured using PR-655
@@ -45,6 +46,8 @@ startPosPri=76; endPosPri=81;
 priWhite_x =  table2array(cieStimsAll(8,startPosPri:endPosPri));
 priWhite_y =  table2array(cieStimsAll(9,startPosPri:endPosPri));
 priWhite_Y =  table2array(cieStimsAll(3,startPosPri:endPosPri));
+grayY = priWhite_Y(end);
+
 priWhite_Y_norm = priWhite_Y/max(priWhite_Y);
 
 % 16 DKL stimulus now, azimuth 0:22.5:33.7.5
@@ -248,8 +251,8 @@ for i=1:length(kdlPhiVals)
     subplot(232); % MB space
     plot(bmr,bmb,'marker', 'o','color',[nRGB0.red nRGB0.green nRGB0.blue]); %predicted
     plot(bmrStim,bmbStim,'marker', '*','color',[nRGB0.red nRGB0.green nRGB0.blue]); %actual
-%     text(0.8,0.2,'o - Predicted','FontSize',8);
-%     text(0.8,0.17,'* - Observed','FontSize',8);
+    text(0.8,0.2,'o - Predicted','FontSize',10);
+    text(0.8,0.17,'* - Observed','FontSize',10);
     
     % Show stimuli in normalized DKL space (cb, tc, lum)
     subplot(233)
@@ -268,6 +271,7 @@ for i=1:length(kdlPhiVals)
     plot(kdlPhiVals(i),(0.5+lum/2)*max(priWhite_Y),'marker', 'o','color',[nRGB0.red nRGB0.green nRGB0.blue]);   hold on
     plot(kdlPhiVals(i),normStimCIEY(i)*max(priWhite_Y),'marker', '*','color',[nRGB0.red nRGB0.green nRGB0.blue]);    
     xlim([-5 350]); xlabel('phi'); ylabel('Y');ylim([0 120]);
+    yline(grayY);
     title('CIE Y across Azimuth (DKL)') ;   
             
     
@@ -302,6 +306,7 @@ end
 
 end
 
+%% Associated functions
 % Macleod Boynton
 function CMF2CF_MB = getMBMatrix
 CMF2CF_MB = [0.15514 0.54312  -0.03286;
