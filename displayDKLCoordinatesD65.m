@@ -6,7 +6,7 @@
 % and returns RGB values of the corresponding DKL stimulus
 % rgb0 - computed using Lablib way
 % rgb1 - computed using Matlab (XYZ to RGB conversion)
-% nRGB0 and nRGB1 - normalized rgb0 and rgb1
+% nRGB0 and nRGB1 - normalized rgb0 and rgb1    
 % ============================================================================
 
 function [rgb0,rgb1,nRGB0,nRGB1] = displayDKLCoordinatesD65(kdlTheta)
