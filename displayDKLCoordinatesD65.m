@@ -1,13 +1,15 @@
-% This function plots colors defined in the DKL space in standard color spaces
+% ============================================================================
+% function displayDKLCoordinatesD65 
+% SourceCode: displayDKLCoordinates.m 
+% [rgb0,rgb1,nRGB0,nRGB1] = displayDKLCoordinatesD65(kdlTheta)
+% plots colors defined in the DKL space in standard color spaces
 % and returns RGB values of the corresponding DKL stimulus
 % rgb0 - computed using Lablib way
 % rgb1 - computed using Matlab (XYZ to RGB conversion)
 % nRGB0 and nRGB1 - normalized rgb0 and rgb1
+% ============================================================================
 
 function [rgb0,rgb1,nRGB0,nRGB1] = displayDKLCoordinatesD65(kdlTheta)
-
-clear 
-% close all
 
 if ~exist('kdlTheta','var');            kdlTheta=0;                     end
 
