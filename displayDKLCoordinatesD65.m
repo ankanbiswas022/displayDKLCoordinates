@@ -389,15 +389,15 @@ rgb.blue  = (lum + cb * kdlConstants.bcb + tc);
 
 %normalize the values between 0 and 1;
 
-% rgb.red = (rgb.red+1)/2;
-% rgb.green = (rgb.green+1)/2;
-% rgb.blue  = (rgb.blue+1)/2;
+rgb.red = (rgb.red+1)/2;
+rgb.green = (rgb.green+1)/2;
+rgb.blue  = (rgb.blue+1)/2;
 
 % original normalization followed inside the lablib for rendering using opengl
 
-rgb.red = 0.5-(rgb.red/2);
-rgb.green = 0.5-(rgb.green/2);
-rgb.blue = 0.5-(rgb.blue/2);
+% rgb.red = 0.5-(rgb.red/2);
+% rgb.green = 0.5-(rgb.green/2);
+% rgb.blue = 0.5-(rgb.blue/2);
 end
 function rgb = normalizeColors(rgb,kdlPhi,kdlTheta)
 
